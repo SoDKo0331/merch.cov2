@@ -9,8 +9,7 @@ import AboutUs from './components/AboutUs';
 import { motion, useScroll, AnimatePresence } from 'framer-motion';
 import Footer from './components/Footer';
 import { PROMISES, COLLECTIONS, CATEGORIES, PROCESS_STEPS } from './constants';
-import heroImage from './assets/image.jpg';
-import BackgroundLogo from './components/BackgroundLogo';
+import logo from './assets/logo.svg';
 import { Analytics } from '@vercel/analytics/react';
 
 const App: React.FC = () => {
@@ -76,32 +75,55 @@ const App: React.FC = () => {
       <main className="relative w-full overflow-hidden">
         {currentPage === 'home' ? (
           <>
-            <section id="home" className="relative w-screen h-[100dvh] flex flex-col justify-center items-center overflow-hidden bg-white m-0 p-0">
-              <div className="absolute inset-0 z-0 opacity-20 grayscale pointer-events-none">
-                <video autoPlay loop muted playsInline className="w-full h-full object-cover">
-                  <source src="https://assets.mixkit.co/videos/preview/mixkit-fashion-model-posing-in-a-white-studio-2735-large.mp4" type="video/mp4" />
-                </video>
-              </div>
-
+            <section id="home" className="relative w-screen h-[100dvh] flex flex-col justify-center items-center overflow-hidden bg-brand-blue m-0 p-0">
+              
               <motion.div
-                initial={{ scale: 1.1, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 2.5, ease: [0.19, 1, 0.22, 1] }}
-                className="absolute inset-0 z-0"
+                initial={{ opacity: 0, scale: 1.05 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+                className="absolute inset-0 z-0 overflow-hidden flex justify-center items-center pointer-events-none"
               >
-                <img
-                  src={heroImage}
-                  alt="High Fashion Editorial"
-                  className="w-full h-full object-cover filter brightness-[0.95] contrast-[1.05]"
-                />
-                <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40" />
-              </motion.div>
+                {/* Advanced Animation 1: Rotating Glowing Orbs ("Тойрч асдаг гэрэл") */}
+                <motion.div 
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                  className="absolute inset-0 z-0 flex items-center justify-center mix-blend-screen"
+                >
+                  <div className="absolute w-[60vw] md:w-[40vw] h-[60vw] md:h-[40vw] bg-brand-yellow rounded-full blur-[100px] opacity-40 -translate-x-[60%] translate-y-[30%]" />
+                  <div className="absolute w-[50vw] md:w-[30vw] h-[50vw] md:h-[30vw] bg-white rounded-full blur-[100px] opacity-30 translate-x-[60%] -translate-y-[40%]" />
+                </motion.div>
 
-              <div className="absolute inset-0 flex items-center justify-center z-10 overflow-hidden pointer-events-none">
-                <div className="w-[120vw] max-w-[1200px] text-brand-yellow/20 blur-[60px] md:blur-[100px] mix-blend-screen scale-150">
-                  <BackgroundLogo className="w-full h-auto" />
+                {/* Fluid Logo Base */}
+                <motion.img
+                  src={logo}
+                  alt="Merchand Logo"
+                  animate={{
+                    scale: [1, 1.05, 1],
+                    rotate: [-2, 2, -2],
+                    y: ["0%", "-2%", "0%"]
+                  }}
+                  transition={{
+                    duration: 15,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                  className="relative z-0 w-[200vw] h-[200vh] md:w-[150vw] md:h-[150vh] object-cover max-w-none opacity-100 filter drop-shadow-[0_0_50px_rgba(185,255,0,0.15)] mix-blend-normal"
+                />
+
+                {/* Edge Fades for Legibility (Reduced) */}
+                <div className="absolute inset-0 pointer-events-none z-10">
+                  {/* Top fade (Header) */}
+                  <div className="absolute top-0 left-0 right-0 h-[15%] bg-gradient-to-b from-brand-blue to-transparent" />
+                  {/* Bottom fade (Button & Text) */}
+                  <div className="absolute bottom-0 left-0 right-0 h-[40%] bg-gradient-to-t from-brand-blue via-brand-blue/60 to-transparent" />
+                  {/* Side fades */}
+                  <div className="absolute top-0 bottom-0 left-0 w-1/5 bg-gradient-to-r from-brand-blue to-transparent opacity-80" />
+                  <div className="absolute top-0 bottom-0 right-0 w-1/5 bg-gradient-to-l from-brand-blue to-transparent opacity-80" />
+                  
+                  {/* Optional general softening */}
+                  <div className="absolute inset-0 bg-brand-blue/5 mix-blend-multiply" />
                 </div>
-              </div>
+              </motion.div>
 
               <div className="absolute bottom-40 md:bottom-48 left-0 right-0 z-20 flex flex-col items-center gap-12 px-6">
                 <div className="max-w-8xl text-center">
