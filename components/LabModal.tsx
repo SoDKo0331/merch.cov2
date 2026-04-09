@@ -141,10 +141,10 @@ const ContactModal: React.FC<ContactModalProps> = ({
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.98, opacity: 0, y: 10 }}
             transition={{ duration: 0.35, ease: [0.23, 1, 0.32, 1] }}
-            className="relative w-full max-w-md max-h-[90vh] overflow-hidden rounded-2xl bg-white shadow-[0_24px_80px_rgba(0,0,0,0.18)] border border-[#0042D2]/15"
+            className="relative w-full max-w-md max-h-[90vh] overflow-hidden rounded-2xl bg-white/80 backdrop-blur-xl shadow-[0_24px_80px_rgba(0,0,0,0.18)] border border-white/20"
           >
             {/* header */}
-            <div className="sticky top-0 z-20 bg-[#0042D2] text-white px-6 py-4">
+            <div className="sticky top-0 z-20 bg-[#0042D2]/90 backdrop-blur-md text-white px-6 py-4">
               <div className="flex items-center justify-between gap-3">
                 <div>
                   <h2 id={titleId} className="text-xl font-display uppercase tracking-wide">

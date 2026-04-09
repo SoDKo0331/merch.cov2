@@ -45,23 +45,25 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, onScrollToSection }) => {
         className={`fixed top-0 z-[100] w-full transition-all duration-700 ${isScrolled ? 'bg-white/90 backdrop-blur-md border-b-[1px] border-deep-black/5 py-1.5' : 'bg-transparent py-4'
           }`}
       >
-        <div className="max-w-[1440px] mx-auto px-17 flex items-center justify-between">
-          <Magnetic strength={0.3}>
-            <div
-              className="relative z-[110] cursor-pointer"
-              onClick={() => onNavigate('home')}
-            >
-              <div className="bg-brand-blue px-6 py-4 rounded-b-[32px] flex items-center justify-center -mt-4 transition-all duration-500 hover:pb-6 group">
-                <img
-                  src={logoLong}
-                  alt="MERCH.CO"
-                  className="h-5 md:h-6 w-auto"
-                />
+        <div className="max-w-[1440px] mx-auto px-6 md:px-12 grid grid-cols-2 lg:grid-cols-3 items-center relative">
+          <div className="flex justify-start items-center">
+            <Magnetic strength={0.3}>
+              <div
+                className="relative z-[110] cursor-pointer"
+                onClick={() => onNavigate('home')}
+              >
+                <div className="bg-brand-blue px-6 py-4 rounded-b-[32px] flex items-center justify-center -mt-4 transition-all duration-500 hover:pb-6 group">
+                  <img
+                    src={logoLong}
+                    alt="MERCH.CO"
+                    className="h-4 md:h-5 w-auto"
+                  />
+                </div>
               </div>
-            </div>
-          </Magnetic>
+            </Magnetic>
+          </div>
 
-          <nav className="hidden lg:flex items-center gap-8">
+          <nav className="hidden lg:flex items-center justify-center gap-10">
             {navItems.map((item) => (
               <div
                 key={item.label}
@@ -81,7 +83,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, onScrollToSection }) => {
                       }
                     }}
                   >
-                    <span className={`relative z-10 text-[16px] font-bold transition-colors duration-300 ${isScrolled ? 'text-deep-black' : 'text-white'
+                    <span className={`relative z-10 text-[14px] font-bold transition-colors duration-300 ${isScrolled ? 'text-deep-black' : 'text-white'
                       }`}>
                       {item.label}
                     </span>
@@ -103,13 +105,13 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, onScrollToSection }) => {
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 10, scale: 0.95 }}
                         transition={{ duration: 0.3, ease: [0.19, 1, 0.22, 1] }}
-                        className="absolute top-full left-0 mt-2 w-56 bg-white border border-deep-black/10 shadow-xl overflow-hidden"
+                        className="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-56 bg-white/70 backdrop-blur-xl border border-white/30 shadow-[0_20px_40px_rgba(0,0,0,0.1)] overflow-hidden rounded-2xl"
                       >
                         <div className="py-2">
                           {categories.map((cat) => (
                             <button
                               key={cat.label}
-                              className="w-full text-left px-6 py-3 text-[12px] font-bold text-deep-black hover:bg-brand-yellow hover:text-deep-black transition-colors duration-300"
+                              className="w-full text-left px-6 py-3 text-[12px] font-bold text-deep-black hover:bg-brand-yellow/80 hover:text-deep-black transition-colors duration-300"
                               onClick={() => {
                                 onScrollToSection(cat.id);
                                 setIsCategoryOpen(false);
@@ -127,12 +129,12 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, onScrollToSection }) => {
             ))}
           </nav>
 
-          <div className="flex items-center gap-6">
+          <div className="flex items-center justify-end gap-6">
             <div className="hidden lg:block">
               <Magnetic strength={0.4}>
-                <button className={`px-8 py-2.5 text-[12px] font-bold border transition-all duration-500 ${isScrolled
+                <button className={`px-8 py-2.5 text-[12px] font-bold border transition-all duration-500 rounded-full backdrop-blur-md ${isScrolled
                   ? 'bg-deep-black text-white border-deep-black'
-                  : 'bg-white text-deep-black border-white hover:bg-transparent hover:text-white'
+                  : 'bg-white/10 text-white border-white/20 hover:bg-white/20'
                   }`}>
                   PROJECT PORTAL
                 </button>

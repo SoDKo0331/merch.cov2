@@ -13,8 +13,8 @@ const CustomCursor: React.FC = () => {
 
       const target = e.target as HTMLElement;
       const isInteractive = !!(
-        target.closest('button') || 
-        target.closest('a') || 
+        target.closest('button') ||
+        target.closest('a') ||
         target.classList.contains('interactive')
       );
       setIsHovering(isInteractive);
@@ -38,13 +38,13 @@ const CustomCursor: React.FC = () => {
 
   return (
     <div className={isHovering ? 'cursor-active' : ''}>
-      <div 
-        className="cursor-dot" 
+      <div
+        className="cursor-dot"
         style={{ transform: `translate3d(${position.x}px, ${position.y}px, 0) translate(-50%, -50%)` }}
       />
-      <div 
-        className="cursor-ring" 
-        style={{ 
+      <div
+        className="cursor-ring"
+        style={{
           transform: `translate3d(${position.x}px, ${position.y}px, 0) translate(-50%, -50%)`,
           scale: isHovering ? 1.5 : 1
         }}

@@ -61,42 +61,80 @@ const SolutionsSlider: React.FC = () => {
 
                 {/* Hero Header */}
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-16 md:mb-24 items-end">
-                    <div className="lg:col-span-8">
+                    <motion.div 
+                        initial={{ opacity: 0, x: -50 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+                        className="lg:col-span-8"
+                    >
                         <div className="inline-block bg-deep-black text-brand-yellow px-3 py-1 mb-6 brutalist-border-sm text-xs font-bold tracking-[0.2em]">
                             Capabilities
                         </div>
-                        <h2 className="text-3xl md:text-5xl lg:text-7xl font-display text-deep-black leading-[0.85] tracking-tighter">
-                            Tailored <span className="text-transparent stroke-text-black hover:text-brand-blue transition-colors duration-500">Solutions</span>
-                            <br />
-                            <span className="text-deep-black italic font-serif lowercase tracking-normal">for your</span> <span className="text-brand-yellow bg-deep-black px-2">Brand's</span>
-                            <br />
-                            Next Chapter.
+                        <h2 className="text-3xl md:text-5xl lg:text-7xl font-display text-deep-black leading-[0.85] tracking-tighter overflow-hidden">
+                            <motion.span 
+                                initial={{ y: "100%" }}
+                                whileInView={{ y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.8, delay: 0.2 }}
+                                className="block"
+                            >
+                                Tailored <span className="text-transparent stroke-text-black hover:text-brand-blue transition-colors duration-500">Solutions</span>
+                            </motion.span>
+                            <motion.span 
+                                initial={{ y: "100%" }}
+                                whileInView={{ y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.8, delay: 0.4 }}
+                                className="block"
+                            >
+                                <span className="text-deep-black italic font-serif lowercase tracking-normal">for your</span> <span className="text-brand-yellow bg-deep-black px-2">Brand's</span>
+                            </motion.span>
+                            <motion.span 
+                                initial={{ y: "100%" }}
+                                whileInView={{ y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.8, delay: 0.6 }}
+                                className="block"
+                            >
+                                Next Chapter.
+                            </motion.span>
                         </h2>
-                    </div>
-                    <div className="lg:col-span-4 flex flex-col items-start lg:items-end justify-between h-full gap-6">
+                    </motion.div>
+                    <motion.div 
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8, delay: 0.8 }}
+                        className="lg:col-span-4 flex flex-col items-start lg:items-end justify-between h-full gap-6"
+                    >
                         <p className="text-deep-black/60 font-bold tracking-tight text-sm md:text-base max-w-[300px] leading-relaxed text-left lg:text-right">
                         </p>
 
                         {/* Navigation Buttons */}
                         <div className="flex gap-4 items-center mt-4 lg:mt-0">
-                            <button
-                                onClick={handlePrev}
-                                disabled={currentIndex === 0}
-                                className="w-12 h-12 brutalist-border-sm flex items-center justify-center bg-white hover:bg-brand-yellow transition-colors disabled:opacity-20 disabled:cursor-not-allowed group"
-                                aria-label="Previous Slide"
-                            >
-                                <span className="material-symbols-outlined group-active:scale-90 transition-transform">arrow_back</span>
-                            </button>
-                            <button
-                                onClick={handleNext}
-                                disabled={currentIndex >= SOLUTIONS.length}
-                                className="w-12 h-12 brutalist-border-sm flex items-center justify-center bg-white hover:bg-brand-yellow transition-colors disabled:opacity-20 disabled:cursor-not-allowed group"
-                                aria-label="Next Slide"
-                            >
-                                <span className="material-symbols-outlined group-active:scale-90 transition-transform">arrow_forward</span>
-                            </button>
+                            <Magnetic strength={0.2}>
+                                <button
+                                    onClick={handlePrev}
+                                    disabled={currentIndex === 0}
+                                    className="w-14 h-14 brutalist-border flex items-center justify-center bg-white hover:bg-brand-yellow transition-all duration-300 disabled:opacity-20 disabled:cursor-not-allowed group rounded-full"
+                                    aria-label="Previous Slide"
+                                >
+                                    <span className="material-symbols-outlined group-active:scale-90 transition-transform">arrow_back</span>
+                                </button>
+                            </Magnetic>
+                            <Magnetic strength={0.2}>
+                                <button
+                                    onClick={handleNext}
+                                    disabled={currentIndex >= SOLUTIONS.length}
+                                    className="w-14 h-14 brutalist-border flex items-center justify-center bg-white hover:bg-brand-yellow transition-all duration-300 disabled:opacity-20 disabled:cursor-not-allowed group rounded-full"
+                                    aria-label="Next Slide"
+                                >
+                                    <span className="material-symbols-outlined group-active:scale-90 transition-transform">arrow_forward</span>
+                                </button>
+                            </Magnetic>
                         </div>
-                    </div>
+                    </motion.div>
                 </div>
 
                 {/* Slider Container */}
@@ -126,6 +164,10 @@ const SolutionsSlider: React.FC = () => {
                         {SOLUTIONS.map((item, index) => (
                             <motion.div
                                 key={index}
+                                initial={{ opacity: 0, x: 100 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.8, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
                                 className="min-w-[280px] md:min-w-[350px] lg:min-w-[400px] relative group"
                             >
                                 {/* Technical Reference Label */}
@@ -137,7 +179,10 @@ const SolutionsSlider: React.FC = () => {
                                 </div>
 
                                 {/* Card Image */}
-                                <div className="aspect-[4/5] relative p-4 brutalist-border bg-white z-10 transition-all duration-500 group-hover:-translate-y-4 group-hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)]">
+                                <motion.div 
+                                    whileHover={{ y: -16, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } }}
+                                    className="aspect-[4/5] relative p-4 brutalist-border bg-white z-10 transition-all duration-500 group-hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)]"
+                                >
                                     <div className="relative w-full h-full overflow-hidden brutalist-border-sm">
                                         <div className="absolute inset-0 bg-brand-blue/10 z-10 mix-blend-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                                         <img
@@ -156,7 +201,7 @@ const SolutionsSlider: React.FC = () => {
 
                                     {/* Overlay Content */}
                                     <div className="absolute inset-0 p-8 flex flex-col justify-end z-20">
-                                        <div className="bg-deep-black text-white p-6 transform translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-out brutalist-border-sm">
+                                        <div className="bg-deep-black/90 backdrop-blur-md text-white p-6 transform translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-out brutalist-border-sm">
                                             <h3 className="text-2xl font-display tracking-tight mb-2 text-brand-yellow">
                                                 {item.title}
                                             </h3>
@@ -165,7 +210,7 @@ const SolutionsSlider: React.FC = () => {
                                             </p>
                                         </div>
                                     </div>
-                                </div>
+                                </motion.div>
 
                                 {/* Bottom Label */}
                                 <div className="mt-8 flex items-start gap-4 px-2 group-hover:opacity-0 transition-opacity duration-300">
@@ -181,7 +226,13 @@ const SolutionsSlider: React.FC = () => {
                         ))}
 
                         {/* Call to Action Card at the end */}
-                        <motion.div className="min-w-[280px] md:min-w-[340px] aspect-[4/5] flex items-center justify-center bg-brand-yellow brutalist-border group cursor-pointer relative overflow-hidden">
+                        <motion.div 
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8, delay: SOLUTIONS.length * 0.1 }}
+                            className="min-w-[280px] md:min-w-[340px] aspect-[4/5] flex items-center justify-center bg-brand-yellow brutalist-border group cursor-pointer relative overflow-hidden"
+                        >
                             <div className="text-center relative z-10 p-8">
                                 <h3 className="text-4xl font-display leading-none mb-4 text-deep-black">
                                     See All <br /> Services

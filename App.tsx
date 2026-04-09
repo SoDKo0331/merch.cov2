@@ -104,31 +104,43 @@ const App: React.FC = () => {
               </div>
 
               <div className="absolute bottom-40 md:bottom-48 left-0 right-0 z-20 flex flex-col items-center gap-12 px-6">
-                <div className="max-w-8xl text-center ">
+                <div className="max-w-8xl text-center">
                   <motion.h2
-                    initial={{ opacity: 0, y: 30 }}
+                    initial={{ opacity: 0, y: 100 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.8, duration: 1.2, ease: [0.19, 1, 0.22, 1] }}
+                    transition={{
+                      delay: 1.2,
+                      duration: 1.5,
+                      ease: [0.16, 1, 0.3, 1]
+                    }}
                     className="text-5xl md:text-9xl lg:text-8xl font-display font-bold text-white uppercase leading-[1.1] drop-shadow-2xl mb-24"
                   >
                     Бид таны брэндийг <br />
                     <span className="text-brand-yellow">бодит болгоно</span>
                   </motion.h2>
 
-                </div>
-
-                <div className="flex flex-col items-center">
-                  <button
-                    onClick={() => setIsContactOpen(true)}
-                    className="group relative px-12 py-6 overflow-hidden border border-brand-yellow bg-brand-yellow transition-transform duration-300 hover:scale-105 active:scale-95 rounded-full"
+                  <motion.div
+                    initial={{ opacity: 0, y: 40 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{
+                      delay: 1.6,
+                      duration: 1.2,
+                      ease: [0.16, 1, 0.3, 1]
+                    }}
+                    className="flex flex-col items-center"
                   >
-                    <span className="relative z-10 text-[14px] font-bold tracking-[0em] text-deep-black transition-colors duration-500 group-hover:text-white">
-                      Customize your merch
-                    </span>
-                    <motion.div
-                      className="absolute inset-0 bg-deep-black translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out"
-                    />
-                  </button>
+                    <button
+                      onClick={() => setIsContactOpen(true)}
+                      className="group relative px-12 py-6 overflow-hidden border border-brand-yellow bg-brand-yellow transition-transform duration-300 hover:scale-105 active:scale-95 rounded-full"
+                    >
+                      <span className="relative z-10 text-[14px] font-bold text-deep-black transition-colors duration-500 group-hover:text-white">
+                        Customize your merch
+                      </span>
+                      <motion.div
+                        className="absolute inset-0 bg-deep-black translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out"
+                      />
+                    </button>
+                  </motion.div>
                 </div>
               </div>
 
@@ -249,13 +261,13 @@ const App: React.FC = () => {
             <Magnetic strength={0.4}>
               <button
                 onClick={() => setIsContactOpen(true)}
-                className="group relative px-10 py-4 border-[1px] border-brown rounded-full overflow-hidden transition-all duration-500 hover:shadow-[0_0_30px_rgba(147,133,96,0.4)] bg-transparent"
+                className="group relative px-10 py-4 border-[1px] border-white/20 rounded-full overflow-hidden transition-all duration-500 hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] bg-white/10 backdrop-blur-lg"
               >
-                <div className="absolute inset-0 bg-brown translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-expo" />
+                <div className="absolute inset-0 bg-brand-yellow translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-expo" />
 
                 <div className="relative z-10 flex items-center gap-3">
-                  <div className="w-1.5 h-1.5 rounded-full bg-brand-yellow animate-pulse" />
-                  <span className="font-display text-lg text-brown group-hover:text-white transition-colors duration-500">
+                  <div className="w-1.5 h-1.5 rounded-full bg-brand-yellow group-hover:bg-deep-black animate-pulse" />
+                  <span className="font-display text-lg text-white group-hover:text-deep-black transition-colors duration-500">
                     Start
                   </span>
                 </div>
